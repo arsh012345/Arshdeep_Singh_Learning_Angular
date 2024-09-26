@@ -1,0 +1,7 @@
+:host:nth-child(even) {
+  background-color: pink;
+}
+
+:host:nth-child(odd) {
+  background-color: teal;
+}
