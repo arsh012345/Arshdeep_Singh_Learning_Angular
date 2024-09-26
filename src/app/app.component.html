@@ -1,20 +1,12 @@
 <html>
 <head>
-<title>
-students
-</title>
+  <title>
+    Assign 3
+  </title>
 </head>
 <body>
 <div class="container">
-  <h2>Student List</h2>
-  <div *ngFor="let students of students" class="students">
-    <div *ngIf="students.isAdmin">
-    <h3>{{ students.first_Name }} {{ students.last_Name }}</h3>
-    <p>ID: {{ students.id }}</p>
-    <p>First Name: {{ students.first_Name }}</p>
-    <p>Admin: {{ students.isAdmin ? 'Yes' : 'No' }}</p>
-    </div>
-  </div>
+  <app-content-list></app-content-list>
 </div>
 </body>
 </html>
