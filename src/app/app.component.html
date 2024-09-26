@@ -1,13 +1,20 @@
 <html>
 <head>
-  <title>
-    Assignment-1
-  </title>
+<title>
+students
+</title>
 </head>
 <body>
-<h1>{{title}}</h1>
-<h2>My first name is {{Firstname}}</h2>
-<h2>My last name is {{lastname}}</h2>
-<h2>My dream GPA is {{My_dream_GPA}}</h2>
+<div class="container">
+  <h2>Student List</h2>
+  <div *ngFor="let students of students" class="students">
+    <div *ngIf="students.isAdmin">
+    <h3>{{ students.first_Name }} {{ students.last_Name }}</h3>
+    <p>ID: {{ students.id }}</p>
+    <p>First Name: {{ students.first_Name }}</p>
+    <p>Admin: {{ students.isAdmin ? 'Yes' : 'No' }}</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
