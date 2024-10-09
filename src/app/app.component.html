@@ -6,7 +6,8 @@
 </head>
 <body>
 <div class="container" >
-  <app-content-list></app-content-list>
+  <app-content-list (gadgetSelected)="onGadgetSelected($event)"></app-content-list>
+  <app-content-list-item *ngIf="selectedGadget" [gadget]="selectedGadget"></app-content-list-item>
 </div>
 </body>
 </html>

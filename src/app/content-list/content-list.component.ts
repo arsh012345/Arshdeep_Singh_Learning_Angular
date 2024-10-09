@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContentListItemComponent } from "../content-list-item/content-list-item.component";
+import { ContentListItemComponent } from '../content-list-item/content-list-item.component';
 import { GadgetsService, IContent } from '../services/gadgets.service';
 
 @Component({
@@ -13,6 +13,8 @@ import { GadgetsService, IContent } from '../services/gadgets.service';
 export class ContentListComponent implements OnInit {
   gadgets: IContent[] = [];
 
+  @Output() gadgetSelected = new EventEmitter<IContent>();
+
   constructor(private gadgetsService: GadgetsService) {}
 
   ngOnInit(): void {
@@ -21,23 +23,7 @@ export class ContentListComponent implements OnInit {
     });
   }
 
-  addGadget(newGadget: IContent): void {
-    this.gadgetsService.addGadget(newGadget).subscribe(updatedGadgets => {
-      this.gadgets = updatedGadgets;
-    });
-  }
-
-  updateGadget(updatedGadget: IContent): void {
-    this.gadgetsService.updateGadget(updatedGadget).subscribe(updatedGadgets => {
-      this.gadgets = updatedGadgets;
-    });
-  }
-
-  deleteGadget(id: number): void {
-    this.gadgetsService.deleteGadget(id).subscribe(removedItem => {
-      if (removedItem) {
-        this.gadgets = this.gadgets.filter(gadget => gadget.id !== id);
-      }
-    });
+  onSelect(gadget: IContent): void {
+    this.gadgetSelected.emit(gadget);
   }
 }

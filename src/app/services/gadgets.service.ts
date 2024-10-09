@@ -12,6 +12,7 @@ export interface IContent {
   providedIn: 'root'
 })
 export class GadgetsService {
+
   constructor() {}
 
   getGadgets(): Observable<IContent[]> {
@@ -19,8 +20,8 @@ export class GadgetsService {
   }
 
   getGadgetById(id: number): Observable<IContent | undefined> {
-    const item = mockContent.find(gadget => gadget.id === id);
-    return of(item);
+    const gadget = mockContent.find(gadget => gadget.id === id);
+    return of(gadget);
   }
 
   addGadget(gadget: IContent): Observable<IContent[]> {
@@ -39,8 +40,9 @@ export class GadgetsService {
   deleteGadget(id: number): Observable<IContent | undefined> {
     const index = mockContent.findIndex(gadget => gadget.id === id);
     if (index !== -1) {
-      const removedItem = mockContent.splice(index, 1)[0];
-      return of(removedItem);
+      const removedGadget = mockContent[index];
+      mockContent.splice(index, 1);
+      return of(removedGadget);
     }
     return of(undefined);
   }

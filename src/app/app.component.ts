@@ -1,22 +1,33 @@
-import {Component, contentChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {studentsInfo} from "./studentsInfo";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {CommonModule, NgClass, NgForOf, NgIf} from "@angular/common";
 import { ContentListComponent } from './content-list/content-list.component';
 import {ContentListItemComponent} from "./content-list-item/content-list-item.component";
+import { GadgetsService, IContent } from './services/gadgets.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgForOf, NgIf, ContentListComponent, ContentListItemComponent, NgClass],
+  imports: [RouterOutlet, NgForOf, NgIf, ContentListComponent, ContentListItemComponent, NgClass, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  selectedGadget: IContent | undefined;
 
+  constructor(private gadgetsService: GadgetsService) {}
 
-  protected readonly contentChild = contentChild;
+  ngOnInit(): void {
+    const itemId = 1;
+    this.gadgetsService.getGadgetById(itemId).subscribe(gadget => {
+      this.selectedGadget = gadget;
+    });
+  }
+
+  onGadgetSelected(gadget: IContent): void {
+    this.selectedGadget = gadget;
+  }
 }
 
 

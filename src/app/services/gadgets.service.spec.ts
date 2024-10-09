@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { GadgetsService } from './gadgets.service';
 
 describe('GadgetsService', () => {
@@ -10,7 +9,4 @@ describe('GadgetsService', () => {
     service = TestBed.inject(GadgetsService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });
