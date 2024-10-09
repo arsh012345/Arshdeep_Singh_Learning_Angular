@@ -12,33 +12,36 @@ export interface IContent {
   providedIn: 'root'
 })
 export class GadgetsService {
-
   constructor() {}
 
-  //using observable below
   getGadgets(): Observable<IContent[]> {
     return of(mockContent);
   }
 
-  getGadgetById(id: number): IContent | undefined {
-    return mockContent.find(gadget => gadget.id === id);
+  getGadgetById(id: number): Observable<IContent | undefined> {
+    const item = mockContent.find(gadget => gadget.id === id);
+    return of(item);
   }
 
-  addGadget(gadget: IContent): void {
+  addGadget(gadget: IContent): Observable<IContent[]> {
     mockContent.push(gadget);
+    return of(mockContent);
   }
 
-  updateGadget(updatedGadget: IContent): void {
+  updateGadget(updatedGadget: IContent): Observable<IContent[]> {
     const index = mockContent.findIndex(gadget => gadget.id === updatedGadget.id);
     if (index !== -1) {
       mockContent[index] = updatedGadget;
     }
+    return of(mockContent);
   }
 
-  deleteGadget(id: number): void {
+  deleteGadget(id: number): Observable<IContent | undefined> {
     const index = mockContent.findIndex(gadget => gadget.id === id);
     if (index !== -1) {
-      mockContent.splice(index, 1);
+      const removedItem = mockContent.splice(index, 1)[0];
+      return of(removedItem);
     }
+    return of(undefined);
   }
 }

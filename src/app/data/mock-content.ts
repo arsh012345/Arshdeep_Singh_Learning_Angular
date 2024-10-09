@@ -1,4 +1,4 @@
-import { IContent } from '../content-list/content-list.component';
+import { IContent } from '../services/gadgets.service';
 
 export const mockContent: IContent[] = [
   { id: 1, name: 'iphone-16', description: 'Latest iphone by apple',},
