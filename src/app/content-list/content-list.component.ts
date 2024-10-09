@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ContentListItemComponent} from "../content-list-item/content-list-item.component";
+import { mockContent } from '../data/mock-content';
+import { GadgetsService } from '../services/gadgets.service';
+
+export interface IContent {
+  id: number;
+  name: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-content-list',
@@ -10,10 +18,9 @@ import {ContentListItemComponent} from "../content-list-item/content-list-item.c
   styleUrl: './content-list.component.css'
 })
 export class ContentListComponent {
-  contents = [
-    { title: 'iphone-16', description: 'Latest iphone by apple',},
-    { title: 'S24', description: 'Samsung flagship phone',},
-    { title: 'Google pixel s8', description: 'Flagship phone by google',},
-    { title: 'Oneplus 12', description: 'Flagship by oneplus',}
-  ];
+  gadgets: IContent[] = [];
+
+  constructor(private gadgetsService: GadgetsService) {
+    this.gadgets = this.gadgetsService.getGadgets();
+  }
 }
