@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ContentListItemComponent} from "../content-list-item/content-list-item.component";
 import { mockContent } from '../data/mock-content';
-import { GadgetsService } from '../services/gadgets.service';
+import { GadgetsService} from '../services/gadgets.service';
 
 export interface IContent {
   id: number;
@@ -20,7 +20,11 @@ export interface IContent {
 export class ContentListComponent {
   gadgets: IContent[] = [];
 
-  constructor(private gadgetsService: GadgetsService) {
-    this.gadgets = this.gadgetsService.getGadgets();
+  constructor(private gadgetsService: GadgetsService) {}
+
+  ngOnInit(): void {
+    this.gadgetsService.getGadgets().subscribe(gadgets => {
+      this.gadgets = gadgets;
+    });
   }
 }

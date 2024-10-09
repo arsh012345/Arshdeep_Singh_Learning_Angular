@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { mockContent } from '../data/mock-content';
 
 export interface IContent {
@@ -11,33 +12,33 @@ export interface IContent {
   providedIn: 'root'
 })
 export class GadgetsService {
-  private gadgets: IContent[] = mockContent;
 
   constructor() {}
 
-  getGadgets(): IContent[] {
-    return this.gadgets;
+  //using observable below
+  getGadgets(): Observable<IContent[]> {
+    return of(mockContent);
   }
 
   getGadgetById(id: number): IContent | undefined {
-    return this.gadgets.find(gadget => gadget.id === id);
+    return mockContent.find(gadget => gadget.id === id);
   }
 
-  //Adding gadgets
   addGadget(gadget: IContent): void {
-    this.gadgets.push(gadget);
+    mockContent.push(gadget);
   }
 
-  //updating gadgets
   updateGadget(updatedGadget: IContent): void {
-    const index = this.gadgets.findIndex(gadget => gadget.id === updatedGadget.id);
+    const index = mockContent.findIndex(gadget => gadget.id === updatedGadget.id);
     if (index !== -1) {
-      this.gadgets[index] = updatedGadget;
+      mockContent[index] = updatedGadget;
     }
   }
 
-  //deleting gadgets
   deleteGadget(id: number): void {
-    this.gadgets = this.gadgets.filter(gadget => gadget.id !== id);
+    const index = mockContent.findIndex(gadget => gadget.id === id);
+    if (index !== -1) {
+      mockContent.splice(index, 1);
+    }
   }
 }
