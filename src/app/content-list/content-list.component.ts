@@ -2,11 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentListItemComponent } from '../content-list-item/content-list-item.component';
 import { GadgetsService, IContent } from '../services/gadgets.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-content-list',
   standalone: true,
-  imports: [CommonModule, ContentListItemComponent],
+  imports: [CommonModule, ContentListItemComponent,NgOptimizedImage],
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.css']
 })

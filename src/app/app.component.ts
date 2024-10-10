@@ -4,11 +4,12 @@ import {CommonModule, NgClass, NgForOf, NgIf} from "@angular/common";
 import { ContentListComponent } from './content-list/content-list.component';
 import {ContentListItemComponent} from "./content-list-item/content-list-item.component";
 import { GadgetsService, IContent } from './services/gadgets.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgForOf, NgIf, ContentListComponent, ContentListItemComponent, NgClass, CommonModule],
+  imports: [RouterOutlet, RouterModule, NgForOf, NgIf, ContentListComponent, ContentListItemComponent, NgClass, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 

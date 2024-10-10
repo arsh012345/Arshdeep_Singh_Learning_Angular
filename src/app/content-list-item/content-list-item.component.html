@@ -1,4 +1,6 @@
 <div *ngIf="gadget">
+  <h2>{{gadget.id}}</h2>
   <h3>{{ gadget.name }}</h3>
   <p>{{ gadget.description }}</p>
+  <img [ngSrc]="gadget.imageUrl" width="400" height="200" alt="{{gadget.name}}"/>
 </div>

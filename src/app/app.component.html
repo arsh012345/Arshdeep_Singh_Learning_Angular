@@ -1,13 +1,20 @@
 <html>
 <head>
   <title>
-    Assign 4
+    Assign 5
   </title>
 </head>
 <body>
+<nav>
+  <a routerLink="/" routerLinkActive="active">Home</a>
+  <a routerLink="/modify-list-item" routerLinkActive="active">Modify List Item</a>
+<router-outlet></router-outlet>
+</nav>
+
 <div class="container" >
   <app-content-list (gadgetSelected)="onGadgetSelected($event)"></app-content-list>
   <app-content-list-item *ngIf="selectedGadget" [gadget]="selectedGadget"></app-content-list-item>
 </div>
+
 </body>
 </html>
