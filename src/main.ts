@@ -1,17 +1,10 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
-import {provideRouter, Route} from "@angular/router";
+import { provideRouter } from '@angular/router';
+import { AppRoutingModule } from './app/app-routing.module';
 
-
-import {PageNotFoundComponent} from "./app/page-not-found/page-not-found.component";
-
-const routes: Route[] = [
-
-
-  { path: '**', component: PageNotFoundComponent }
-];
-
-
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    { provide: AppRoutingModule, useValue: AppRoutingModule },
+  ],
+});

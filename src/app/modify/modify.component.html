@@ -1,1 +1,17 @@
-<p>modify works!</p>
+<h2>{{ isEditing ? 'Edit Content' : 'Add Content' }}</h2>
+
+<form [formGroup]="contentForm" (ngSubmit)="onSubmit()">
+  <label for="id">ID:</label>
+  <input id="id" formControlName="id" type="text" />
+
+  <label for="title">Title:</label>
+  <input id="title" formControlName="title" type="text" />
+
+  <label for="description">Description:</label>
+  <input id="description" formControlName="description" type="text" />
+
+  <label for="inventor">Inventor:</label>
+  <input id="inventor" formControlName="inventor" type="text" />
+
+  <button type="submit">{{ isEditing ? 'Update' : 'Add' }}</button>
+</form>
