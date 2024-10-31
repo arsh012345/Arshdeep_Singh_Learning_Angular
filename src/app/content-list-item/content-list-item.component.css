@@ -1,7 +1,0 @@
-:host(even) {
-  background-color: pink;
-}
-
-:host(odd) {
-  background-color: teal;
-}
