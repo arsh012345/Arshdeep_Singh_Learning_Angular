@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { IContent } from './mock-content';
 import { mock_content } from './mock-content';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private contentList: IContent[] = mock_content;
+  private itemsSubject: BehaviorSubject<IContent[]> = new BehaviorSubject(mock_content);
+  items$: Observable<IContent[]> = this.itemsSubject.asObservable();
 
   getItems(): Observable<IContent[]> {
-    return of(this.contentList);
+    return this.items$;
   }
 
-  //To add the data
-  addItem(item: IContent): void {
-    this.contentList.push(item);
+  addItem(newItem: IContent): void {
+    const currentItems = this.itemsSubject.getValue();
+    this.itemsSubject.next([...currentItems, newItem]);
   }
 
-//below for update the data
   updateItem(updatedItem: IContent): void {
-    const index = this.contentList.findIndex(item => item.id === updatedItem.id);
-    if (index > -1) {
-      this.contentList[index] = updatedItem;
-    }
+    const currentItems = this.itemsSubject.getValue();
+    const index = currentItems.findIndex(item => item.id === updatedItem.id);
+    currentItems[index] = updatedItem;
+    this.itemsSubject.next([...currentItems]);
   }
 
-  //This is to delete it
   deleteItem(id: number): void {
-    this.contentList = this.contentList.filter(item => item.id !== id);
+    const currentItems = this.itemsSubject.getValue();
+    const updatedItems = currentItems.filter(item => item.id !== id);
+    this.itemsSubject.next(updatedItems);
   }
 }

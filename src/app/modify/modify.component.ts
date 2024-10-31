@@ -23,9 +23,10 @@ export class ModifyComponent implements OnInit {
     private router: Router
   ) {
     this.contentForm = this.fbuild.group({
-      id: [''],
+      id: ['', Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
+      inventor: ['', Validators.required],
     });
   }
 
@@ -49,6 +50,7 @@ export class ModifyComponent implements OnInit {
     } else {
       this.dataService.addItem(contentItem);
     }
+    this.contentForm.reset();
     this.router.navigate(['/list']);
   }
 }

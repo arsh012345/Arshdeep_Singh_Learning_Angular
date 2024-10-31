@@ -17,11 +17,11 @@ export class ListComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loadItems();
+    this.getItems();
   }
 
-  loadItems(): void {
-    this.dataService.getItems().subscribe((data: IContent[]) => {
+  getItems(): void {
+    this.dataService.getItems().subscribe((data) => {
       this.items = data;
     });
   }
@@ -31,7 +31,9 @@ export class ListComponent implements OnInit {
   }
 
   deleteItem(id: number): void {
-    this.dataService.deleteItem(id);
-    this.loadItems();
+    if (confirm('Do you want to delete this?')) {
+      this.dataService.deleteItem(id);
+      this.getItems();
+    }
   }
 }
