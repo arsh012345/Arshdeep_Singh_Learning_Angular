@@ -1,13 +1,6 @@
-export interface IContent {
-  id: number;
-  title: string;
-  description: string;
-  inventor: string;
-}
-
-export const mock_content : IContent[] = [
-  { id: 1, title: 'Telephone', description: 'Device to talk another person anywhere in world', inventor: 'Alexander Graham Bell'},
-  { id: 2, title: 'Motor Vehicle', description: 'Motorized moving vehicle for replacing animal powered carts', inventor:  'Carl Benz'},
-  { id: 3, title: 'Computer', description: 'Machine that can do multiple tasks in seconds', inventor:  'Charles Babbage'},
-  { id: 4, title: 'Electricity', description: 'A source of power easy to use and replaced steam power', inventor:  'Benjamin Franklin'}
+import { employee } from './employee.model';
+export const Employee: employee[] = [
+  { name: 'Arsh', dateHired: new Date(2023, 3, 15), position: 'Software developer', salary: 85000 },
+  { name: 'Harman', dateHired: new Date(2024, 1, 19), position: 'Project Assistant', salary: 35000 },
+  { name: 'Shubh', dateHired: new Date(2023, 5, 10), position: 'Data Manager', salary: 65000 },
 ];

@@ -1,9 +1,0 @@
-<h2>Inventions</h2>
-<ul>
-  <li *ngFor="let item of items">
-    ID: {{ item.id }} - Title: {{ item.title }} - Description: {{ item.description }} - Inventor: {{ item.inventor }}
-    <button (click)="editItem(item.id)">Edit</button>
-    <button (click)="deleteItem(item.id)">Delete</button>
-  </li>
-</ul>
-<button routerLink="/modify">Click to add new Content</button>
