@@ -4,11 +4,12 @@ import { CommonModule, NgClass, NgForOf, NgIf, DatePipe,UpperCasePipe,CurrencyPi
 import { RouterModule } from '@angular/router';
 import { Employee } from './data/mock-content';
 import { employee } from './data/employee.model';
+import {HHighlightDirective} from "./h-highlight.directive";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, NgForOf, NgIf, NgClass, CommonModule, DatePipe,UpperCasePipe,CurrencyPipe],
+  imports: [RouterOutlet, RouterModule, NgForOf, NgIf, NgClass, HHighlightDirective , CommonModule, DatePipe,UpperCasePipe,CurrencyPipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

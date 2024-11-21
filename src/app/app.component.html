@@ -1,6 +1,6 @@
 <div id="main">
   <h1>List of Employees of Ground Effects</h1>
-<div *ngFor="let employee of employees">
+<div *ngFor="let employee of employees" [appHHighlight]="'yellow'">
   <h3>{{ employee.name }}</h3>
   <p>Hired Date: {{ employee.dateHired | date:'longDate' }}</p>
   <p>Position: {{ employee.position | uppercase }}</p>
