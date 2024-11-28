@@ -1,9 +1,13 @@
-<div id="main">
-  <h1>List of Employees of Ground Effects</h1>
-<div *ngFor="let employee of employees" [appHHighlight]="'yellow'">
-  <h3>{{ employee.name }}</h3>
+<mat-card class="edited">
+ <mat-card-title>List of Employees of Ground Effects</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+<mat-list-item *ngFor="let employee of employees" [appHHighlight]="'brown'">
+  <h1>{{ employee.name }}</h1>
   <p>Hired Date: {{ employee.dateHired | date:'longDate' }}</p>
   <p>Position: {{ employee.position | uppercase }}</p>
   <p>Salary: {{ employee.salary | currency:'USD' }}</p>
-</div>
-</div>
+</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

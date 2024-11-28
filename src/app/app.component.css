@@ -1,27 +1,25 @@
-#main{
+.edited{
   max-width: 100%;
   max-height: 100%;
   background-color: seagreen;
-  padding: 10px;
+  padding: 10em;
 }
-div{
+
+.edited mat-card-title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: sans-serif, Serif;
+  color: aliceblue;
+}
+
+.edited mat-list-item{
   text-align: center;
   border: 0px solid teal;
   max-width: 500px;
-  padding-bottom: 2px;
-  background-color: skyblue;
+  padding-bottom: 6em;
+  padding-top: 6em;
+  background-color: blue;
   margin: auto;
-}
-
-h1{
-  color: skyblue;
-}
-
-h3 {
-  font-size: 28px;
-  color: Green;
-}
-
-p {
-  font-size: 20px;
+  text-decoration-style: solid;
 }
